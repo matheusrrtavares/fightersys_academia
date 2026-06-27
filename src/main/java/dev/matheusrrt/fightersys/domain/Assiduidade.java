@@ -14,10 +14,10 @@ public class Assiduidade {
     private Long id;
 
     @Column(name = "data_entrada")
-    private LocalDate dataEntrada;
+    private LocalDateTime dataEntrada;
 
     @Column(name = "data_saida")
-    private LocalDate dataSaida;
+    private LocalDateTime dataSaida;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matricula_id")
@@ -26,7 +26,7 @@ public class Assiduidade {
     @PrePersist
     public void prePersist(){
         if(dataEntrada == null){
-            dataEntrada = LocalDate.now();
+            dataEntrada = LocalDateTime.now();
         }
     }
 
@@ -38,19 +38,19 @@ public class Assiduidade {
         this.id = id;
     }
 
-    public LocalDate getDataEntrada() {
+    public LocalDateTime getDataEntrada() {
         return dataEntrada;
     }
 
-    public void setDataEntrada(LocalDate dataEntrada) {
+    public void setDataEntrada(LocalDateTime dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
 
-    public LocalDate getDataSaida() {
+    public LocalDateTime getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(LocalDate dataSaida) {
+    public void setDataSaida(LocalDateTime dataSaida) {
         this.dataSaida = dataSaida;
     }
 

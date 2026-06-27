@@ -15,7 +15,7 @@ public class Aluno {
 
     private String nome;
 
-    @Column(name = "data_nascimentp")
+    @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
     @Column(name = "sexo", length = 1)
@@ -46,7 +46,7 @@ public class Aluno {
         criadoEm = LocalDateTime.now();
     }
 
-    @PrePersist
+    @PreUpdate
     public void preUpdate(){
         atualizadoEm = LocalDateTime.now();
     }

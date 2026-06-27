@@ -12,7 +12,7 @@ public class Graduacao {
 
     private String nome;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "modalidade_id")
     private Modalidade modalidade;
 

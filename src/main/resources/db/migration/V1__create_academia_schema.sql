@@ -54,7 +54,7 @@ CREATE TABLE matriculas_modalidades(
     id BIGSERIAL PRIMARY KEY,
     matricula_id BIGINT NOT NULL REFERENCES matriculas(id),
     modalidade_id BIGINT NOT NULL REFERENCES modalidades(id),
-    graducacao_id BIGINT NOT NULL REFERENCES graduacoes(id),
+    graduacao_id BIGINT NOT NULL REFERENCES graduacoes(id),
     plano_id BIGINT NOT NULL REFERENCES planos(id),
     data_inicio DATE NOT NULL DEFAULT CURRENT_DATE,
     data_fim DATE,
