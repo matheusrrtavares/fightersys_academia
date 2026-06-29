@@ -1,6 +1,8 @@
 package dev.matheusrrt.fightersys.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,6 +18,7 @@ public class Aluno {
     private String nome;
 
     @Column(name = "data_nascimento")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
 
     @Column(name = "sexo", length = 1)
