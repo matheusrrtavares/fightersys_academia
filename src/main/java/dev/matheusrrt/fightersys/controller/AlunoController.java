@@ -3,6 +3,7 @@ package dev.matheusrrt.fightersys.controller;
 import dev.matheusrrt.fightersys.dto.AlunoRequest;
 import dev.matheusrrt.fightersys.dto.AlunoResponse;
 import dev.matheusrrt.fightersys.service.AlunoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,7 @@ public class AlunoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AlunoResponse cadastrar(@RequestBody AlunoRequest request){
+    public AlunoResponse cadastrar(@RequestBody @Valid AlunoRequest request){
         return service.cadastrar(request);
     }
 
@@ -35,7 +36,7 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public AlunoResponse atualizar(@PathVariable Long id, @RequestBody AlunoRequest request){
+    public AlunoResponse atualizar(@PathVariable Long id, @RequestBody @Valid AlunoRequest request){
         return service.atualizar(id, request);
     }
 
