@@ -1,10 +1,12 @@
 package dev.matheusrrt.fightersys.service;
 
 import dev.matheusrrt.fightersys.domain.Aluno;
+import dev.matheusrrt.fightersys.dto.AlunoFiltroRequest;
 import dev.matheusrrt.fightersys.dto.AlunoRequest;
 import dev.matheusrrt.fightersys.dto.AlunoResponse;
 import dev.matheusrrt.fightersys.exception.RegraNegocioException;
 import dev.matheusrrt.fightersys.repository.AlunoRepository;
+import dev.matheusrrt.fightersys.specification.AlunoSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,8 +28,9 @@ public class AlunoService {
         return AlunoResponse.fromEntity(alunoSalvo);
     }
 
-    public Page<AlunoResponse> listar(Pageable pageable){
-        return alunoRepository.findAll(pageable).map(AlunoResponse::fromEntity);
+    public Page<AlunoResponse> listar(AlunoFiltroRequest filtro, Pageable pageable){
+        return alunoRepository.findAll(AlunoSpecification.comFiltros(filtro),
+                pageable).map(AlunoResponse::fromEntity);
     }
 
     public AlunoResponse buscarPorId(Long id){

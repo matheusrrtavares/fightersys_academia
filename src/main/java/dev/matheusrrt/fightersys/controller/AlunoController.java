@@ -1,8 +1,10 @@
 package dev.matheusrrt.fightersys.controller;
 
+import dev.matheusrrt.fightersys.dto.AlunoFiltroRequest;
 import dev.matheusrrt.fightersys.dto.AlunoRequest;
 import dev.matheusrrt.fightersys.dto.AlunoResponse;
 import dev.matheusrrt.fightersys.service.AlunoService;
+import dev.matheusrrt.fightersys.specification.AlunoSpecification;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,8 +28,8 @@ public class AlunoController {
     }
 
     @GetMapping
-    public Page<AlunoResponse> listar(Pageable pageable){
-        return service.listar(pageable);
+    public Page<AlunoResponse> listar(AlunoFiltroRequest filtro, Pageable pageable){
+        return service.listar(filtro, pageable);
     }
 
     @GetMapping("/{id}")
